@@ -292,7 +292,7 @@ cl_add_pos(args, "output", "Output filename", 0); // Optional positional
 
 ---
 
-#### Parsing Arguments
+## Parsing Arguments
 ```c
 int cl_parse(Clargs *p, int argc, char **argv);
 ```
@@ -313,7 +313,7 @@ if (cl_parse(args, argc, argv) != 0) {
 
 ---
 
-#### Accessing Argument Values
+## Accessing Argument Values
 
 All getters optionally provide a pointer to `ok` to check if value exists.
 ```c
