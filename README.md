@@ -48,6 +48,7 @@ Clargs *args = cl_create("myprog", "This is a sample parser");
 > // Only short name
 > cl_add_flag(args, 'v', 0, "Enable verbose mode");
 > ```
+> meta is the place-holder name shown in usage (e.g., --name NAME).
 
 1. **Flag (boolean)**
 ```c
