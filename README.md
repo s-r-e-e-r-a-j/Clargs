@@ -85,3 +85,15 @@ cl_add_char(args, 'g', "gender", "GENDER", "User gender", 0, 'Notprovided'); // 
 - **required = 1** → User must provide
 
 - **required = 0** → Optional, `default` is used if missing
+
+4. **Short**
+```c
+int cl_add_short(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, short default);
+```
+**Example:**
+```c
+cl_add_short(args, 's', "score", "SCORE", "User score", 0, 10);
+```
+- **required = 1** → User must provide
+
+- **required = 0** → Optional, `default` is used if missing
