@@ -137,3 +137,18 @@ cl_add_long(args, 0, "timeout", "TIMEOUT", "Timeout in ms", 0, 5000);
 - **required = 0** → Optional, `def`(`default`) is used if missing
 
 ---
+
+7. **Long long**
+```c
+int cl_add_llong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, long long def);
+```
+
+**Example:**
+```c
+cl_add_llong(args, 0, "bigval", "BIGVAL", "Large integer value", 0, 1234567890123LL);
+```
+- **required = 1** → User must provide
+
+- **required = 0** → Optional, `def`(`default`) is used if missing
+
+---
