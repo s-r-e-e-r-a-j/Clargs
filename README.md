@@ -37,3 +37,16 @@ Clargs *cl_create(const char *prog, const char *desc);
 ```c
 Clargs *args = cl_create("myprog", "This is a sample parser");
 ```
+## Adding Arguments
+1. **Flag (boolean)**
+```c
+int cl_add_flag(Clargs *p, char short_name, const char *long_name, const char *help);
+```
+
+- **short_name**: `-f`
+
+- **long_name**: `--flag`
+
+- **help**: Description
+
+- Required: Flags are **optional** (presence = 1, absence = 0)
