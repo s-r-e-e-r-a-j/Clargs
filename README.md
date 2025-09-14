@@ -152,3 +152,48 @@ cl_add_llong(args, 0, "bigval", "BIGVAL", "Large integer value", 0, 123456789012
 - **required = 0** → Optional, `def`(`default`) is used if missing
 
 ---
+
+8. **Size_t**
+```c
+int cl_add_size(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, size_t def);
+```
+**Example:**
+```c
+cl_add_size(args, 0, "bufsize", "SIZE", "Buffer size", 0, 1024);
+```
+- **required = 1** → User must provide
+
+- **required = 0** → Optional, `def`(`default`) is used if missing
+
+---
+
+9. **Float**
+```c
+int cl_add_float(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, float def);
+```
+
+**Example:**
+```c
+cl_add_float(args, 0, "ratio", "RATIO", "Scaling ratio", 0, 1.5f);
+```
+- **required = 1** → User must provide
+
+- **required = 0** → Optional, `def`(`default`) is used if missing
+
+---
+
+10. **Double**
+```c
+int cl_add_double(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, double def);
+```
+**Example:**
+```c
+cl_add_double(args, 0, "pi", "PI", "Approximate pi value", 0, 3.14159);
+```
+- **required = 1** → User must provide
+
+- **required = 0** → Optional, `def`(`default`) is used if missing
+
+---
+
+
