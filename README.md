@@ -32,3 +32,8 @@ Clargs *cl_create(const char *prog, const char *desc);
 - **desc**: Description of the program (`shown in help`).
 
 - Returns a pointer to a `Clargs` parser object.
+
+**Example:**
+```c
+Clargs *args = cl_create("myprog", "This is a sample parser");
+```
