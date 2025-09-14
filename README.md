@@ -209,3 +209,70 @@ cl_add_uchar(args, 'u', "usergender", "UCHAR", "User gender code", 0, 1);
 - **required = 1** → User must provide
 
 - **required = 0** → Optional, `def`(`default`) is used if missing
+
+ ---
+
+12. **Unsigned Short**
+```c
+int cl_add_ushort(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, unsigned short def);
+```
+
+**Example:**
+```c
+cl_add_ushort(args, 0, "portnum", "PORT", "Port number", 0, 8080);
+```
+
+- **required = 1** → User must provide
+
+- **required = 0** → Optional, `def`(`default`) is used if missing
+
+---
+
+13. **Unsigned Int**
+```c
+int cl_add_uint(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, unsigned int def);
+```
+
+**Example:**
+```c
+cl_add_uint(args, 's', "buffersize", "SIZE", "Buffer size", 0, 1024);
+```
+
+- **required = 1** → User must provide
+
+- **required = 0** → Optional, `def`(`default`) is used if missing
+
+---
+
+14. **Unsigned Long**
+```c
+int cl_add_ulong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, unsigned long def);
+```
+
+**Example:**
+```c
+cl_add_ulong(args, 0, "maxbytes", "MAXBYTES", "Maximum bytes allowed", 0, 500000UL);
+```
+
+- **required = 1** → User must provide
+
+- **required = 0** → Optional, `def`(`default`) is used if missing
+
+---
+
+15. **Unsigned Long Long**
+```c
+int cl_add_ullong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, unsigned long long def);
+```
+
+**Example:**
+```c
+cl_add_ullong(args, 0, "hugeval", "HUGEVAL", "Very large integer value", 0, 123456789012345ULL);
+```
+
+- **required = 1** → User must provide
+
+- **required = 0** → Optional, `def`(`default`) is used if missing
+
+---
+
