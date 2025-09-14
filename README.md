@@ -322,3 +322,21 @@ const char *name = cl_get_string(args, "name");
 int iter = cl_get_int(args, "iterations", &ok);
 if(ok) printf("Iterations = %d\n", iter);
 ```
+
+| Function          | Returns               | Example                                  |
+|-------------------|-----------------------|------------------------------------------|
+| cl_get_flag       | int (0/1)             | cl_get_flag(args, "verbose");            |
+| cl_get_string     | const char *          | cl_get_string(args, "name");             |
+| cl_get_char       | char                  | cl_get_char(args, "gender", &ok);        |
+| cl_get_short      | short                 | cl_get_short(args, "score", &ok);        |
+| cl_get_int        | int                   | cl_get_int(args, "count", &ok);          |
+| cl_get_long       | long                  | cl_get_long(args, "timeout", &ok);       |
+| cl_get_llong      | long long             | cl_get_llong(args, "bigval", &ok);       |
+| cl_get_uchar      | unsigned char         | cl_get_uchar(args, "level", &ok);        |
+| cl_get_ushort     | unsigned short        | cl_get_ushort(args, "port", &ok);        |
+| cl_get_uint       | unsigned int          | cl_get_uint(args, "size", &ok);          |
+| cl_get_ulong      | unsigned long         | cl_get_ulong(args, "maxval", &ok);       |
+| cl_get_ullong     | unsigned long long    | cl_get_ullong(args, "hugeval", &ok);     |
+| cl_get_size       | size_t                | cl_get_size(args, "bufsize", &ok);       |
+| cl_get_float      | float                 | cl_get_float(args, "ratio", &ok);        |
+| cl_get_double     | double                | cl_get_double(args, "pi", &ok);          |
