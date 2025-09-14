@@ -22,6 +22,16 @@ CLARGS is a lightweight, flexible, and powerful C programming language library f
 - **Lightweight and portable** — no external dependencies
 - **Dynamic argument array growth** for flexible usage
 
+## Header File Placement
+
+- **Recommended**: Place `clargs.h` in the **same directory** as your `.c` source file.
+```c
+#include "clargs.h"
+```
+
+- This works on **Linux, Windows, and macOS** without any extra setup.
+
+- For larger projects, you can place it in a dedicated `include/` folder and adjust the include path, but for most users, keeping it in the same directory is **easiest and safest**.
 
 ## Creating Argument Parser
 
