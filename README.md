@@ -351,3 +351,29 @@ if(ok) printf("Iterations = %d\n", iter);
 | cl_get_size       | size_t                | cl_get_size(args, "bufsize", &ok);       |
 | cl_get_float      | float                 | cl_get_float(args, "ratio", &ok);        |
 | cl_get_double     | double                | cl_get_double(args, "pi", &ok);          |
+
+
+## Help Message
+```c
+void cl_help(Clargs *p);
+```
+
+- Automatically prints usage and description.
+
+- Includes all arguments, defaults, and required info.
+
+**Example:**
+```c
+cl_help(args);
+```
+## Freeing Resources
+```c
+void cl_free(Clargs *p);
+```
+
+- Frees memory used by parser.
+
+**Example:**
+```c
+cl_free(args);
+```
