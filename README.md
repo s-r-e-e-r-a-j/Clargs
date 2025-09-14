@@ -59,13 +59,13 @@ cl_add_flag(args, 'v', "verbose", "Enable verbose output");
 
 2. **String**
 ```c
-int cl_add_string(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, const char *default);
+int cl_add_string(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, const char *def);
 ```
 
 
 - **required = 1** → User must provide
 
-- **required = 0** → Optional, `default` is used if missing
+- **required = 0** → Optional, `def`(`default`) is used if missing
 
  **Example:**
 ```c
@@ -75,7 +75,7 @@ cl_add_string(args, 'c', "city", "CITY", "User city", 0, "Unknown"); // Optional
 
 3. **Char**
 ```c
-int cl_add_char(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, char default);
+int cl_add_char(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, char def);
 ```
 
 **Example:**
@@ -84,11 +84,11 @@ cl_add_char(args, 'g', "gender", "GENDER", "User gender", 0, 'Notprovided'); // 
 ```
 - **required = 1** → User must provide
 
-- **required = 0** → Optional, `default` is used if missing
+- **required = 0** → Optional,`def` (`default`) is used if missing
 
 4. **Short**
 ```c
-int cl_add_short(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, short default);
+int cl_add_short(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, short def);
 ```
 **Example:**
 ```c
@@ -96,4 +96,4 @@ cl_add_short(args, 's', "score", "SCORE", "User score", 0, 10);
 ```
 - **required = 1** → User must provide
 
-- **required = 0** → Optional, `default` is used if missing
+- **required = 0** → Optional, `def`(`default`) is used if missing
