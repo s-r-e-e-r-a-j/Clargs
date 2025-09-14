@@ -1,3 +1,24 @@
 ## CLARGS – Command-Line Argument Parsing Library for C
 
 CLARGS is a lightweight, flexible, and powerful C programming language library for parsing command-line arguments. It supports a wide variety of argument types, including flags, strings, characters, integers, floats, doubles, and more. It is designed to make building command-line tools in C easier, safer, and more robust.
+
+## Features
+
+- **Supports multiple argument types**
+  - Boolean flags (`-f`, `--flag`)
+  - Strings (`char *`)
+  - Character (`char`)
+  - Short, Int, Long, Long Long (`short`, `int`, `long`, `long long`)
+  - Unsigned variants (`unsigned char`, `unsigned short`, `unsigned int`, `unsigned long`, `unsigned long long`)
+  - Size (`size_t`)
+  - Floating-point (`float`, `double`)
+  - Positional arguments
+
+- **Default values** for all argument types
+- **Required and optional arguments** support
+- **Automatic help message generation** (`-h` / `--help`)
+- **Short and long options** (`-x` and `--example`)
+- **Easy retrieval** of parsed values through getter functions
+- **Lightweight and portable** — no external dependencies
+- **Dynamic argument array growth** for flexible usage
+- 
