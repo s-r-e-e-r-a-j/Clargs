@@ -72,3 +72,16 @@ int cl_add_string(Clargs *p, char short_name, const char *long_name, const char 
 cl_add_string(args, 'n', "name", "NAME", "User name", 1, NULL); // Required
 cl_add_string(args, 'c', "city", "CITY", "User city", 0, "Unknown"); // Optional
 ```
+
+3. **Char**
+```c
+int cl_add_char(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, char default);
+```
+
+**Example:**
+```c
+cl_add_char(args, 'g', "gender", "GENDER", "User gender", 0, 'Notprovided'); // Optional
+```
+- **required = 1** → User must provide
+
+- **required = 0** → Optional, `default` is used if missing
