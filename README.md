@@ -87,9 +87,9 @@ int cl_add_string(Clargs *p, char short_name, const char *long_name, const char 
 ```
 
 
-- **required = 1** → User must provide
+- **req(required) = 1** → User must provide
 
-- **required = 0** → Optional, `def`(`default`) is used if missing
+- **req(required) = 0** → Optional, `def`(`default`) is used if missing
 
  **Example:**
 ```c
@@ -108,9 +108,9 @@ int cl_add_char(Clargs *p, char short_name, const char *long_name, const char *m
 ```c
 cl_add_char(args, 'g', "gender", "GENDER", "User gender", 0, 'U'); // Optional
 ```
-- **required = 1** → User must provide
+- **req(required) = 1** → User must provide
 
-- **required = 0** → Optional,`def` (`default`) is used if missing
+- **req(required) = 0** → Optional,`def` (`default`) is used if missing
 
 ---
 
@@ -122,9 +122,9 @@ int cl_add_short(Clargs *p, char short_name, const char *long_name, const char *
 ```c
 cl_add_short(args, 's', "score", "SCORE", "User score", 0, 10);
 ```
-- **required = 1** → User must provide
+- **req(required) = 1** → User must provide
 
-- **required = 0** → Optional, `def`(`default`) is used if missing
+- **req(required) = 0** → Optional, `def`(`default`) is used if missing
 
 ---
 
@@ -138,9 +138,9 @@ int cl_add_int(Clargs *p, char short_name, const char *long_name, const char *me
 cl_add_int(args, 'i', "iterations", "N", "Number of iterations", 0, 100);
 cl_add_int(args, 0, "count", "COUNT", "Count of items", 1, 0); // Required
 ```
-- **required = 1** → User must provide
+- **req(required) = 1** → User must provide
 
-- **required = 0** → Optional, `def`(`default`) is used if missing
+- **req(required) = 0** → Optional, `def`(`default`) is used if missing
 
 ---
 
@@ -154,9 +154,9 @@ int cl_add_long(Clargs *p, char short_name, const char *long_name, const char *m
 cl_add_long(args, 0, "timeout", "TIMEOUT", "Timeout in ms", 0, 5000);
 ```
 
-- **required = 1** → User must provide
+- **req(required) = 1** → User must provide
 
-- **required = 0** → Optional, `def`(`default`) is used if missing
+- **req(required) = 0** → Optional, `def`(`default`) is used if missing
 
 ---
 
@@ -169,9 +169,9 @@ int cl_add_llong(Clargs *p, char short_name, const char *long_name, const char *
 ```c
 cl_add_llong(args, 0, "bigval", "BIGVAL", "Large integer value", 0, 1234567890123LL);
 ```
-- **required = 1** → User must provide
+- **req(required) = 1** → User must provide
 
-- **required = 0** → Optional, `def`(`default`) is used if missing
+- **req(required) = 0** → Optional, `def`(`default`) is used if missing
 
 ---
 
@@ -183,9 +183,9 @@ int cl_add_size(Clargs *p, char short_name, const char *long_name, const char *m
 ```c
 cl_add_size(args, 0, "bufsize", "SIZE", "Buffer size", 0, 1024);
 ```
-- **required = 1** → User must provide
+- **req(required) = 1** → User must provide
 
-- **required = 0** → Optional, `def`(`default`) is used if missing
+- **req(required) = 0** → Optional, `def`(`default`) is used if missing
 
 ---
 
@@ -198,9 +198,9 @@ int cl_add_float(Clargs *p, char short_name, const char *long_name, const char *
 ```c
 cl_add_float(args, 0, "ratio", "RATIO", "Scaling ratio", 0, 1.5f);
 ```
-- **required = 1** → User must provide
+- **req(required) = 1** → User must provide
 
-- **required = 0** → Optional, `def`(`default`) is used if missing
+- **req(required) = 0** → Optional, `def`(`default`) is used if missing
 
 ---
 
@@ -212,9 +212,9 @@ int cl_add_double(Clargs *p, char short_name, const char *long_name, const char 
 ```c
 cl_add_double(args, 0, "pi", "PI", "Approximate pi value", 0, 3.14159);
 ```
-- **required = 1** → User must provide
+- **req(required) = 1** → User must provide
 
-- **required = 0** → Optional, `def`(`default`) is used if missing
+- **req(required) = 0** → Optional, `def`(`default`) is used if missing
 
 ---
 
@@ -228,9 +228,9 @@ int cl_add_uchar(Clargs *p, char short_name, const char *long_name, const char *
 cl_add_uchar(args, 'u', "usergender", "UCHAR", "User gender code", 0, 1);
 ```
 
-- **required = 1** → User must provide
+- **req(required) = 1** → User must provide
 
-- **required = 0** → Optional, `def`(`default`) is used if missing
+- **req(required) = 0** → Optional, `def`(`default`) is used if missing
 
  ---
 
@@ -244,9 +244,9 @@ int cl_add_ushort(Clargs *p, char short_name, const char *long_name, const char 
 cl_add_ushort(args, 0, "portnum", "PORT", "Port number", 0, 8080);
 ```
 
-- **required = 1** → User must provide
+- **req(required) = 1** → User must provide
 
-- **required = 0** → Optional, `def`(`default`) is used if missing
+- **req(required) = 0** → Optional, `def`(`default`) is used if missing
 
 ---
 
@@ -260,9 +260,9 @@ int cl_add_uint(Clargs *p, char short_name, const char *long_name, const char *m
 cl_add_uint(args, 's', "buffersize", "SIZE", "Buffer size", 0, 1024);
 ```
 
-- **required = 1** → User must provide
+- **req(required) = 1** → User must provide
 
-- **required = 0** → Optional, `def`(`default`) is used if missing
+- **req(required) = 0** → Optional, `def`(`default`) is used if missing
 
 ---
 
@@ -276,9 +276,9 @@ int cl_add_ulong(Clargs *p, char short_name, const char *long_name, const char *
 cl_add_ulong(args, 0, "maxbytes", "MAXBYTES", "Maximum bytes allowed", 0, 500000UL);
 ```
 
-- **required = 1** → User must provide
+- **req(required) = 1** → User must provide
 
-- **required = 0** → Optional, `def`(`default`) is used if missing
+- **req(required) = 0** → Optional, `def`(`default`) is used if missing
 
 ---
 
@@ -292,9 +292,9 @@ int cl_add_ullong(Clargs *p, char short_name, const char *long_name, const char 
 cl_add_ullong(args, 0, "hugeval", "HUGEVAL", "Very large integer value", 0, 123456789012345ULL);
 ```
 
-- **required = 1** → User must provide
+- **req(required) = 1** → User must provide
 
-- **required = 0** → Optional, `def`(`default`) is used if missing
+- **req(required) = 0** → Optional, `def`(`default`) is used if missing
 
 ---
 
@@ -308,9 +308,9 @@ int cl_add_pos(Clargs *p, const char *name, const char *help, int req);
 cl_add_pos(args, "input", "Input filename", 1);  // Required positional argument
 cl_add_pos(args, "output", "Output filename", 0); // Optional positional
 ```
-- **required = 1** → User must provide
+- **req(required) = 1** → User must provide
 
-- **required = 0** → Optional
+- **req(required) = 0** → Optional
 
 ---
 
