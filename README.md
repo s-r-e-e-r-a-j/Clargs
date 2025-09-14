@@ -83,7 +83,7 @@ cl_add_flag(args, 'v', "verbose", "Enable verbose output");
 
 2. **String**
 ```c
-int cl_add_string(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, const char *def);
+int cl_add_string(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, const char *def);
 ```
 
 
@@ -101,7 +101,7 @@ cl_add_string(args, 'c', "city", "CITY", "User city", 0, "Unknown"); // Optional
 
 3. **Char**
 ```c
-int cl_add_char(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, char def);
+int cl_add_char(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, char def);
 ```
 
 **Example:**
@@ -116,7 +116,7 @@ cl_add_char(args, 'g', "gender", "GENDER", "User gender", 0, 'U'); // Optional
 
 4. **Short**
 ```c
-int cl_add_short(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, short def);
+int cl_add_short(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, short def);
 ```
 **Example:**
 ```c
@@ -130,7 +130,7 @@ cl_add_short(args, 's', "score", "SCORE", "User score", 0, 10);
 
 5. **Int**
 ```c
-int cl_add_int(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, int def);
+int cl_add_int(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, int def);
 ```
 
 **Example:**
@@ -146,7 +146,7 @@ cl_add_int(args, 0, "count", "COUNT", "Count of items", 1, 0); // Required
 
 6. **Long**
 ```c
-int cl_add_long(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, long def);
+int cl_add_long(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, long def);
 ```
 
 **Example:**
@@ -162,7 +162,7 @@ cl_add_long(args, 0, "timeout", "TIMEOUT", "Timeout in ms", 0, 5000);
 
 7. **Long long**
 ```c
-int cl_add_llong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, long long def);
+int cl_add_llong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, long long def);
 ```
 
 **Example:**
@@ -177,7 +177,7 @@ cl_add_llong(args, 0, "bigval", "BIGVAL", "Large integer value", 0, 123456789012
 
 8. **Size_t**
 ```c
-int cl_add_size(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, size_t def);
+int cl_add_size(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, size_t def);
 ```
 **Example:**
 ```c
@@ -191,7 +191,7 @@ cl_add_size(args, 0, "bufsize", "SIZE", "Buffer size", 0, 1024);
 
 9. **Float**
 ```c
-int cl_add_float(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, float def);
+int cl_add_float(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, float def);
 ```
 
 **Example:**
@@ -206,7 +206,7 @@ cl_add_float(args, 0, "ratio", "RATIO", "Scaling ratio", 0, 1.5f);
 
 10. **Double**
 ```c
-int cl_add_double(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, double def);
+int cl_add_double(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, double def);
 ```
 **Example:**
 ```c
@@ -220,7 +220,7 @@ cl_add_double(args, 0, "pi", "PI", "Approximate pi value", 0, 3.14159);
 
 11. **Unsigned Char**
 ```c
-int cl_add_uchar(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, unsigned char def);
+int cl_add_uchar(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned char def);
 ```
 
 **Example:**
@@ -236,7 +236,7 @@ cl_add_uchar(args, 'u', "usergender", "UCHAR", "User gender code", 0, 1);
 
 12. **Unsigned Short**
 ```c
-int cl_add_ushort(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, unsigned short def);
+int cl_add_ushort(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned short def);
 ```
 
 **Example:**
@@ -252,7 +252,7 @@ cl_add_ushort(args, 0, "portnum", "PORT", "Port number", 0, 8080);
 
 13. **Unsigned Int**
 ```c
-int cl_add_uint(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, unsigned int def);
+int cl_add_uint(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned int def);
 ```
 
 **Example:**
@@ -268,7 +268,7 @@ cl_add_uint(args, 's', "buffersize", "SIZE", "Buffer size", 0, 1024);
 
 14. **Unsigned Long**
 ```c
-int cl_add_ulong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, unsigned long def);
+int cl_add_ulong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned long def);
 ```
 
 **Example:**
@@ -284,7 +284,7 @@ cl_add_ulong(args, 0, "maxbytes", "MAXBYTES", "Maximum bytes allowed", 0, 500000
 
 15. **Unsigned Long Long**
 ```c
-int cl_add_ullong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, unsigned long long def);
+int cl_add_ullong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned long long def);
 ```
 
 **Example:**
@@ -300,7 +300,7 @@ cl_add_ullong(args, 0, "hugeval", "HUGEVAL", "Very large integer value", 0, 1234
 
 16. **Positional Arguments**
 ```c
-int cl_add_pos(Clargs *p, const char *name, const char *help, int required);
+int cl_add_pos(Clargs *p, const char *name, const char *help, int req);
 ```
 
 **Example:**
