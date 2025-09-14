@@ -38,6 +38,17 @@ Clargs *cl_create(const char *prog, const char *desc);
 Clargs *args = cl_create("myprog", "This is a sample parser");
 ```
 ## Adding Arguments
+> **Note:** If you don’t need either the **short name** or the **long name**, you can pass `0`.
+> 
+> Example:  
+> ```c
+> // Only long name
+> cl_add_int(args, 0, "count", "COUNT", "Number of items", 0, 5);
+>
+> // Only short name
+> cl_add_flag(args, 'v', 0, "Enable verbose mode");
+> ```
+
 1. **Flag (boolean)**
 ```c
 int cl_add_flag(Clargs *p, char short_name, const char *long_name, const char *help);
