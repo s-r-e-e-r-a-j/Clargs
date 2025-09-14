@@ -383,3 +383,100 @@ void cl_free(Clargs *p);
 ```c
 cl_free(args);
 ```
+
+## Example program
+```c
+/*
+  Example program using clargs.h
+  --------------------------------
+  - Shows how to add every argument type
+  - Shows how to get values back
+  - Uses &ok to check if argument is registered
+  - Remember: use 1 for required, 0 for optional
+  - You can pass 0 for short_name or long_name if you don't need them
+*/
+
+#include <stdio.h>
+#include "clargs.h"
+
+int main(int argc, char **argv) {
+    int ok;
+
+    // Create parser
+    Clargs *args = cl_create("example", "Demo of all clargs functions");
+
+    // Add different argument types
+    cl_add_flag(args, 'v', "verbose", "Enable verbose mode");                 // flag
+    cl_add_string(args, 'n', "name", "NAME", "User name", 0, "guest");        // string
+    cl_add_char(args, 0, "gender", "GENDER", "Gender (M/F)", 0, 'U');         // char
+    cl_add_short(args, 's', "score", "SCORE", "Short number", 0, 10);         // short
+    cl_add_int(args, 'p', "port", "PORT", "Port number", 0, 8080);            // int
+    cl_add_long(args, 0, "timeout", "TIMEOUT", "Timeout in ms", 0, 5000L);    // long
+    cl_add_llong(args, 0, "bigval", "BIGVAL", "Big 64-bit number", 0, 123456789LL); // long long
+    cl_add_uchar(args, 0, "ubyte", "UBYTE", "Unsigned char", 0, 255);         // unsigned char
+    cl_add_ushort(args, 0, "u16", "U16", "Unsigned short", 0, 65000);         // unsigned short
+    cl_add_uint(args, 0, "u32", "U32", "Unsigned int", 0, 123456789u);        // unsigned int
+    cl_add_ulong(args, 0, "ulong", "ULONG", "Unsigned long", 0, 1234567890UL);// unsigned long
+    cl_add_ullong(args, 0, "ull", "ULLONG", "Unsigned long long", 0, 1234567890123ULL); // unsigned long long
+    cl_add_size(args, 0, "bufsize", "SIZE", "Buffer size", 0, 4096);          // size_t
+    cl_add_float(args, 0, "ratio", "RATIO", "Float value", 0, 0.75f);         // float
+    cl_add_double(args, 0, "threshold", "THRESH", "Double value", 0, 0.123);  // double
+    cl_add_pos(args, "input", "Input file", 1);                               // positional (required)
+
+    // Parse command-line
+    if (cl_parse(args, argc, argv) != 0) {
+        cl_free(args);
+        return 1;
+    }
+
+    // Get values back
+    printf("verbose   : %d\n", cl_get_flag(args, "verbose"));
+    printf("name      : %s\n", cl_get_string(args, "name"));
+
+    char gender = cl_get_char(args, "gender", &ok);
+    if (ok) printf("gender    : %c\n", gender);
+
+    short score = cl_get_short(args, "score", &ok);
+    if (ok) printf("score     : %d\n", score);
+
+    int port = cl_get_int(args, "port", &ok);
+    if (ok) printf("port      : %d\n", port);
+
+    long timeout = cl_get_long(args, "timeout", &ok);
+    if (ok) printf("timeout   : %ld\n", timeout);
+
+    long long bigval = cl_get_llong(args, "bigval", &ok);
+    if (ok) printf("bigval    : %lld\n", bigval);
+
+    unsigned char ubyte = cl_get_uchar(args, "ubyte", &ok);
+    if (ok) printf("ubyte     : %u\n", ubyte);
+
+    unsigned short u16 = cl_get_ushort(args, "u16", &ok);
+    if (ok) printf("u16       : %u\n", u16);
+
+    unsigned int u32 = cl_get_uint(args, "u32", &ok);
+    if (ok) printf("u32       : %u\n", u32);
+
+    unsigned long ul = cl_get_ulong(args, "ulong", &ok);
+    if (ok) printf("ulong     : %lu\n", ul);
+
+    unsigned long long ull = cl_get_ullong(args, "ull", &ok);
+    if (ok) printf("ull       : %llu\n", ull);
+
+    size_t bufsize = cl_get_size(args, "bufsize", &ok);
+    if (ok) printf("bufsize   : %zu\n", bufsize);
+
+    float ratio = cl_get_float(args, "ratio", &ok);
+    if (ok) printf("ratio     : %f\n", ratio);
+
+    double thresh = cl_get_double(args, "threshold", &ok);
+    if (ok) printf("threshold : %f\n", thresh);
+
+    printf("input     : %s\n", cl_get_string(args, "input"));
+
+    // Free parser
+    cl_free(args);
+    return 0;
+}
+
+```
