@@ -196,4 +196,16 @@ cl_add_double(args, 0, "pi", "PI", "Approximate pi value", 0, 3.14159);
 
 ---
 
+11. **Unsigned Char**
+```c
+int cl_add_uchar(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, unsigned char def);
+```
 
+**Example:**
+```c
+cl_add_uchar(args, 'u', "usergender", "UCHAR", "User gender code", 0, 1);
+```
+
+- **required = 1** → User must provide
+
+- **required = 0** → Optional, `def`(`default`) is used if missing
