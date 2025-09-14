@@ -96,7 +96,7 @@ int cl_add_char(Clargs *p, char short_name, const char *long_name, const char *m
 
 **Example:**
 ```c
-cl_add_char(args, 'g', "gender", "GENDER", "User gender", 0, 'Notprovided'); // Optional
+cl_add_char(args, 'g', "gender", "GENDER", "User gender", 0, 'U'); // Optional
 ```
 - **required = 1** → User must provide
 
