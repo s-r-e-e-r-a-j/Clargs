@@ -289,3 +289,36 @@ cl_add_pos(args, "output", "Output filename", 0); // Optional positional
 - **required = 1** → User must provide
 
 - **required = 0** → Optional
+
+---
+
+#### Parsing Arguments
+```c
+int cl_parse(Clargs *p, int argc, char **argv);
+```
+
+- Parses `argc/argv`.
+
+- Returns `0` on success, `-1` on error.
+
+- Automatically checks required arguments.
+
+**Example:**
+```c
+if (cl_parse(args, argc, argv) != 0) {
+    fprintf(stderr, "Error parsing arguments\n");
+    return 1;
+}
+```
+
+---
+
+#### Accessing Argument Values
+
+All getters optionally provide a pointer to `ok` to check if value exists.
+```c
+int ok;
+const char *name = cl_get_string(args, "name");
+int iter = cl_get_int(args, "iterations", &ok);
+if(ok) printf("Iterations = %d\n", iter);
+```
