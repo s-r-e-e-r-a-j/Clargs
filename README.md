@@ -111,3 +111,19 @@ cl_add_int(args, 0, "count", "COUNT", "Count of items", 1, 0); // Required
 - **required = 1** → User must provide
 
 - **required = 0** → Optional, `def`(`default`) is used if missing
+
+--
+
+6. **Long**
+```c
+int cl_add_long(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, long def);
+```
+
+**Example:**
+```c
+cl_add_long(args, 0, "timeout", "TIMEOUT", "Timeout in ms", 0, 5000);
+```
+
+- **required = 1** → User must provide
+
+- **required = 0** → Optional, `def`(`default`) is used if missing
