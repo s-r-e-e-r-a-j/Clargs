@@ -50,3 +50,25 @@ int cl_add_flag(Clargs *p, char short_name, const char *long_name, const char *h
 - **help**: Description
 
 - Required: Flags are **optional** (presence = 1, absence = 0)
+
+**Example:**
+```c
+cl_add_flag(args, 'v', "verbose", "Enable verbose output");
+// Use: ./myprog -v
+```
+
+2. **String**
+```c
+int cl_add_string(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, const char *default);
+```
+
+
+- **required = 1** → User must provide
+
+- **required = 0** → Optional, `default` is used if missing
+
+ **Example:**
+```c
+cl_add_string(args, 'n', "name", "NAME", "User name", 1, NULL); // Required
+cl_add_string(args, 'c', "city", "CITY", "User city", 0, "Unknown"); // Optional
+```
