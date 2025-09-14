@@ -22,3 +22,13 @@ CLARGS is a lightweight, flexible, and powerful C programming language library f
 - **Lightweight and portable** — no external dependencies
 - **Dynamic argument array growth** for flexible usage
 
+
+## Creating Argument Parser
+
+```c
+Clargs *cl_create(const char *prog, const char *desc);
+```
+- **prog**: Program name (e.g., `"myprogram"`).
+- **desc**: Description of the program (`shown in help`).
+
+- Returns a pointer to a `Clargs` parser object.
