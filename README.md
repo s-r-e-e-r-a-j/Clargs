@@ -21,4 +21,4 @@ CLARGS is a lightweight, flexible, and powerful C programming language library f
 - **Easy retrieval** of parsed values through getter functions
 - **Lightweight and portable** — no external dependencies
 - **Dynamic argument array growth** for flexible usage
-- 
+
