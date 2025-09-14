@@ -353,6 +353,8 @@ if(ok) printf("Iterations = %d\n", iter);
 | cl_get_double     | double                | cl_get_double(args, "pi", &ok);          |
 
 
+---
+
 ## Help Message
 ```c
 void cl_help(Clargs *p);
@@ -366,6 +368,9 @@ void cl_help(Clargs *p);
 ```c
 cl_help(args);
 ```
+
+---
+
 ## Freeing Resources
 ```c
 void cl_free(Clargs *p);
