@@ -276,3 +276,16 @@ cl_add_ullong(args, 0, "hugeval", "HUGEVAL", "Very large integer value", 0, 1234
 
 ---
 
+16. **Positional Arguments**
+```c
+int cl_add_pos(Clargs *p, const char *name, const char *help, int required);
+```
+
+**Example:**
+```c
+cl_add_pos(args, "input", "Input filename", 1);  // Required positional argument
+cl_add_pos(args, "output", "Output filename", 0); // Optional positional
+```
+- **required = 1** → User must provide
+
+- **required = 0** → Optional
