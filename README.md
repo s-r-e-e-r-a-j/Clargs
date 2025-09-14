@@ -97,3 +97,17 @@ cl_add_short(args, 's', "score", "SCORE", "User score", 0, 10);
 - **required = 1** → User must provide
 
 - **required = 0** → Optional, `def`(`default`) is used if missing
+
+5. **Int**
+```c
+int cl_add_int(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int required, int def);
+```
+
+**Example:**
+```c
+cl_add_int(args, 'i', "iterations", "N", "Number of iterations", 0, 100);
+cl_add_int(args, 0, "count", "COUNT", "Count of items", 1, 0); // Required
+```
+- **required = 1** → User must provide
+
+- **required = 0** → Optional, `def`(`default`) is used if missing
