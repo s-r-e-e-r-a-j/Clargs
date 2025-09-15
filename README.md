@@ -337,7 +337,7 @@ if (cl_parse(args, argc, argv) != 0) {
 
 ## Accessing Argument Values
 
-All getters except cl_get_flag and cl_get_string optionally provide a pointer to `ok` to check if value exists.
+All getters except `cl_get_flag` and `cl_get_string` optionally provide a pointer to `ok` to check if value exists.
 ```c
 int ok;
 const char *name = cl_get_string(args, "name");
