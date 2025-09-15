@@ -490,3 +490,6 @@ int main(int argc, char **argv) {
 }
 
 ```
+
+## License
+This project is licensed under the MIT License
