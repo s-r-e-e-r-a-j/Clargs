@@ -110,7 +110,7 @@ cl_add_char(args, 'g', "gender", "GENDER", "User gender", 0, 'U'); // Optional
 ```
 - **req(required) = 1** → User must provide
 
-- **req(required) = 0** → Optional,`def` (`default`) is used if missing
+- **req(required) = 0** → Optional,`def`(`default`) is used if missing
 
 ---
 
