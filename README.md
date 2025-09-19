@@ -210,7 +210,7 @@ int cl_add_double(Clargs *p, char short_name, const char *long_name, const char 
 ```
 **Example:**
 ```c
-cl_add_double(args, 0, "pi", "PI", "Approximate pi value", 0, 3.14159);
+cl_add_double(args, 0, "threshold", "THRESH", "Double value", 0, 0.123);
 ```
 - **req(required) = 1** → User must provide
 
