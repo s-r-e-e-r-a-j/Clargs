@@ -76,11 +76,11 @@ typedef struct {
     int count;
 } Clargs;
 
-static Clarg *make_arg() {
+static inline Clarg *make_arg() {
     return (Clarg*)calloc(1, sizeof(Clarg));
 }
 
-static void free_arg(Clarg *a) {
+static inline void free_arg(Clarg *a) {
     if (!a) return;
     if (a->val_str) free(a->val_str);
     free(a);
@@ -103,14 +103,14 @@ void cl_free(Clargs *p) {
     free(p);
 }
 
-static void cl_grow(Clargs *p) {
+static inline void cl_grow(Clargs *p) {
     if (p->count >= p->cap) {
         p->cap *= 2;
         p->args = (Clarg**)realloc(p->args, p->cap * sizeof(Clarg*));
     }
 }
 
-static int cl_find_idx(Clargs *p, const char *name) {
+static inline int cl_find_idx(Clargs *p, const char *name) {
     for (int i=0;i<p->count;i++) {
         Clarg *a = p->args[i];
         if (a->long_name && name && strcmp(a->long_name, name) == 0) return i;
@@ -228,7 +228,7 @@ int cl_add_pos(Clargs *p, const char *name, const char *help, int req) {
 
 // parsing helpers 
 
-static int parse_int_simple(const char *s, long *out, int base) {
+static inline int parse_int_simple(const char *s, long *out, int base) {
     if (!s) return 0;
     errno = 0;
     char *end = NULL;
@@ -238,7 +238,7 @@ static int parse_int_simple(const char *s, long *out, int base) {
     return 1;
 }
 
-static int parse_llong_simple(const char *s, long long *out, int base) {
+static inline int parse_llong_simple(const char *s, long long *out, int base) {
     if (!s) return 0;
     errno = 0;
     char *end = NULL;
@@ -248,7 +248,7 @@ static int parse_llong_simple(const char *s, long long *out, int base) {
     return 1;
 }
 
-static int parse_unsigned_long_simple(const char *s, unsigned long *out, int base) {
+static inline int parse_unsigned_long_simple(const char *s, unsigned long *out, int base) {
     if (!s) return 0;
     errno = 0;
     char *end = NULL;
@@ -258,7 +258,7 @@ static int parse_unsigned_long_simple(const char *s, unsigned long *out, int bas
     return 1;
 }
 
-static int parse_unsigned_llong_simple(const char *s, unsigned long long *out, int base) {
+static inline int parse_unsigned_llong_simple(const char *s, unsigned long long *out, int base) {
     if (!s) return 0;
     errno = 0;
     char *end = NULL;
@@ -268,7 +268,7 @@ static int parse_unsigned_llong_simple(const char *s, unsigned long long *out, i
     return 1;
 }
 
-static int parse_float_simple(const char *s, float *out) {
+static inline int parse_float_simple(const char *s, float *out) {
     if (!s) return 0;
     errno = 0;
     char *end = NULL;
@@ -278,7 +278,7 @@ static int parse_float_simple(const char *s, float *out) {
     return 1;
 }
 
-static int parse_double_simple(const char *s, double *out) {
+static inline int parse_double_simple(const char *s, double *out) {
     if (!s) return 0;
     errno = 0;
     char *end = NULL;
