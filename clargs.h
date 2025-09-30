@@ -86,7 +86,7 @@ static void free_arg(Clarg *a) {
     free(a);
 }
 
-Clargs *cl_create(const char *prog, const char *desc) {
+static Clargs *cl_create(const char *prog, const char *desc) {
     Clargs *p = (Clargs*)malloc(sizeof(Clargs));
     p->prog = prog ? prog : "program";
     p->desc = desc ? desc : "";
@@ -120,7 +120,7 @@ static int cl_find_idx(Clargs *p, const char *name) {
     return -1;
 }
 
-int cl_add_flag(Clargs *p, char short_name, const char *long_name, const char *help) {
+static inline int cl_add_flag(Clargs *p, char short_name, const char *long_name, const char *help) {
     Clarg *a = make_arg();
     a->short_name = short_name;
     a->long_name = long_name;
@@ -131,7 +131,7 @@ int cl_add_flag(Clargs *p, char short_name, const char *long_name, const char *h
     return p->count - 1;
 }
 
-int cl_add_string(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, const char *def) {
+static inline int cl_add_string(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, const char *def) {
     Clarg *a = make_arg();
     a->short_name = short_name;
     a->long_name = long_name;
@@ -147,17 +147,17 @@ int cl_add_string(Clargs *p, char short_name, const char *long_name, const char 
 }
 
 // char 
-int cl_add_char(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, char def) {
+static inline int cl_add_char(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, char def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"CHAR"; a->help = help; a->kind = ARG_CHAR; a->required = req; a->def_char = def; a->val_char = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
 
 // short 
-int cl_add_short(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, short def) {
+static inline int cl_add_short(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, short def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"SHORT"; a->help = help; a->kind = ARG_SHORT; a->required = req; a->def_short = def; a->val_short = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
 
 // int 
-int cl_add_int(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, int def) {
+static inline int cl_add_int(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, int def) {
     Clarg *a = make_arg();
     a->short_name = short_name;
     a->long_name = long_name;
@@ -173,48 +173,48 @@ int cl_add_int(Clargs *p, char short_name, const char *long_name, const char *me
 }
 
 // long 
-int cl_add_long(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, long def) {
+static inline int cl_add_long(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, long def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"LONG"; a->help = help; a->kind = ARG_LONG; a->required = req; a->def_long = def; a->val_long = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
 
 // long long 
-int cl_add_llong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, long long def) {
+static inline int cl_add_llong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, long long def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"LLONG"; a->help = help; a->kind = ARG_LLONG; a->required = req; a->def_llong = def; a->val_llong = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
 
 // unsigned variants 
-int cl_add_uchar(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned char def) {
+static inline int cl_add_uchar(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned char def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"UCHAR"; a->help = help; a->kind = ARG_UCHAR; a->required = req; a->def_uchar = def; a->val_uchar = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
-int cl_add_ushort(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned short def) {
+static inline int cl_add_ushort(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned short def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"USHORT"; a->help = help; a->kind = ARG_USHORT; a->required = req; a->def_ushort = def; a->val_ushort = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
-int cl_add_uint(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned int def) {
+static inline int cl_add_uint(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned int def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"UINT"; a->help = help; a->kind = ARG_UINT; a->required = req; a->def_uint = def; a->val_uint = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
-int cl_add_ulong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned long def) {
+static inline int cl_add_ulong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned long def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"ULONG"; a->help = help; a->kind = ARG_ULONG; a->required = req; a->def_ulong = def; a->val_ulong = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
-int cl_add_ullong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned long long def) {
+static inline int cl_add_ullong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned long long def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"ULLONG"; a->help = help; a->kind = ARG_ULLONG; a->required = req; a->def_ullong = def; a->val_ullong = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
 
 // size_t 
-int cl_add_size(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, size_t def) {
+static inline int cl_add_size(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, size_t def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"SIZE"; a->help = help; a->kind = ARG_SIZE; a->required = req; a->def_size = def; a->val_size = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
 
 // float 
-int cl_add_float(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, float def) {
+static inline int cl_add_float(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, float def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"FLT"; a->help = help; a->kind = ARG_FLOAT; a->required = req; a->def_float = def; a->val_float = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
 
 // double 
-int cl_add_double(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, double def) {
+static inline int cl_add_double(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, double def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"DBL"; a->help = help; a->kind = ARG_DOUBLE; a->required = req; a->def_double = def; a->val_double = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
 
-int cl_add_pos(Clargs *p, const char *name, const char *help, int req) {
+static inline int cl_add_pos(Clargs *p, const char *name, const char *help, int req) {
     Clarg *a = make_arg();
     a->long_name = name;
     a->meta = name;
@@ -290,7 +290,7 @@ static inline int parse_double_simple(const char *s, double *out) {
 
 // help printer 
 
-void cl_help(Clargs *p) {
+static inline void cl_help(Clargs *p) {
     printf("Usage: %s", p->prog);
     for (int i=0;i<p->count;i++) {
         Clarg *a = p->args[i];
@@ -351,7 +351,7 @@ void cl_help(Clargs *p) {
 
 // parsing 
 
-int cl_parse(Clargs *p, int argc, char **argv) {
+static int cl_parse(Clargs *p, int argc, char **argv) {
     if (!p) return -1;
     if (argc > 0) p->prog = argv[0];
     for (int i=1;i<argc;i++) {
@@ -462,11 +462,11 @@ static inline Clarg *cl_find(Clargs *p, const char *name) {
     return NULL;
 }
 
-int cl_get_flag(Clargs *p, const char *name) {
+static inline int cl_get_flag(Clargs *p, const char *name) {
     Clarg *a = cl_find(p, name); return a && a->present;
 }
 
-const char *cl_get_string(Clargs *p, const char *name) {
+static inline const char *cl_get_string(Clargs *p, const char *name) {
     Clarg *a = cl_find(p, name); return a ? a->val_str : NULL;
 }
 
