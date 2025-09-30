@@ -80,7 +80,7 @@ static inline Clarg *make_arg() {
     return (Clarg*)calloc(1, sizeof(Clarg));
 }
 
-static inline void free_arg(Clarg *a) {
+static void free_arg(Clarg *a) {
     if (!a) return;
     if (a->val_str) free(a->val_str);
     free(a);
@@ -103,14 +103,14 @@ void cl_free(Clargs *p) {
     free(p);
 }
 
-static inline void cl_grow(Clargs *p) {
+static void cl_grow(Clargs *p) {
     if (p->count >= p->cap) {
         p->cap *= 2;
         p->args = (Clarg**)realloc(p->args, p->cap * sizeof(Clarg*));
     }
 }
 
-static inline int cl_find_idx(Clargs *p, const char *name) {
+static int cl_find_idx(Clargs *p, const char *name) {
     for (int i=0;i<p->count;i++) {
         Clarg *a = p->args[i];
         if (a->long_name && name && strcmp(a->long_name, name) == 0) return i;
