@@ -451,7 +451,7 @@ int cl_parse(Clargs *p, int argc, char **argv) {
 
 // finder and getters 
 
-static Clarg *cl_find(Clargs *p, const char *name) {
+static inline Clarg *cl_find(Clargs *p, const char *name) {
     if (!name) return NULL;
     for (int i=0;i<p->count;i++) {
         Clarg *a = p->args[i];
