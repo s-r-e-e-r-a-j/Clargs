@@ -96,7 +96,7 @@ static Clargs *cl_create(const char *prog, const char *desc) {
     return p;
 }
 
-void cl_free(Clargs *p) {
+static void cl_free(Clargs *p) {
     if (!p) return;
     for (int i=0;i<p->count;i++) free_arg(p->args[i]);
     free(p->args);
@@ -290,7 +290,7 @@ static inline int parse_double_simple(const char *s, double *out) {
 
 // help printer 
 
-static inline void cl_help(Clargs *p) {
+static void cl_help(Clargs *p) {
     printf("Usage: %s", p->prog);
     for (int i=0;i<p->count;i++) {
         Clarg *a = p->args[i];
@@ -470,21 +470,21 @@ static inline const char *cl_get_string(Clargs *p, const char *name) {
     Clarg *a = cl_find(p, name); return a ? a->val_str : NULL;
 }
 
-char cl_get_char(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0; } if (ok) *ok = 1; return a->val_char; }
-short cl_get_short(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0; } if (ok) *ok = 1; return a->val_short; }
-int cl_get_int(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0; } if (ok) *ok = 1; return a->val_int; }
-long cl_get_long(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0L; } if (ok) *ok = 1; return a->val_long; }
-long long cl_get_llong(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0LL; } if (ok) *ok = 1; return a->val_llong; }
+static inline char cl_get_char(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0; } if (ok) *ok = 1; return a->val_char; }
+static inline short cl_get_short(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0; } if (ok) *ok = 1; return a->val_short; }
+static inline int cl_get_int(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0; } if (ok) *ok = 1; return a->val_int; }
+static inline long cl_get_long(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0L; } if (ok) *ok = 1; return a->val_long; }
+static inline long long cl_get_llong(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0LL; } if (ok) *ok = 1; return a->val_llong; }
 
-unsigned char cl_get_uchar(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0; } if (ok) *ok = 1; return a->val_uchar; }
-unsigned short cl_get_ushort(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0; } if (ok) *ok = 1; return a->val_ushort; }
-unsigned int cl_get_uint(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0u; } if (ok) *ok = 1; return a->val_uint; }
-unsigned long cl_get_ulong(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0ul; } if (ok) *ok = 1; return a->val_ulong; }
-unsigned long long cl_get_ullong(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0ull; } if (ok) *ok = 1; return a->val_ullong; }
+static inline unsigned char cl_get_uchar(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0; } if (ok) *ok = 1; return a->val_uchar; }
+static inline unsigned short cl_get_ushort(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0; } if (ok) *ok = 1; return a->val_ushort; }
+static inline unsigned int cl_get_uint(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0u; } if (ok) *ok = 1; return a->val_uint; }
+static inline unsigned long cl_get_ulong(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0ul; } if (ok) *ok = 1; return a->val_ulong; }
+static inline unsigned long long cl_get_ullong(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0ull; } if (ok) *ok = 1; return a->val_ullong; }
 
-size_t cl_get_size(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return (size_t)0; } if (ok) *ok = 1; return a->val_size; }
+static inline size_t cl_get_size(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return (size_t)0; } if (ok) *ok = 1; return a->val_size; }
 
-float cl_get_float(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0.0f; } if (ok) *ok = 1; return a->val_float; }
-double cl_get_double(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0.0; } if (ok) *ok = 1; return a->val_double; }
+static inline float cl_get_float(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0.0f; } if (ok) *ok = 1; return a->val_float; }
+static inline double cl_get_double(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0.0; } if (ok) *ok = 1; return a->val_double; }
 
 #endif
