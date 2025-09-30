@@ -80,7 +80,7 @@ static inline Clarg *make_arg() {
     return (Clarg*)calloc(1, sizeof(Clarg));
 }
 
-static void free_arg(Clarg *a) {
+static inline void free_arg(Clarg *a) {
     if (!a) return;
     if (a->val_str) free(a->val_str);
     free(a);
