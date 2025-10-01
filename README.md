@@ -352,15 +352,27 @@ cl_add_double(args, 0, "threshold", "THRESH", "Double value", 0, 0.123);
 int cl_add_uchar(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned char def);
 ```
 
-**Example:**
-```c
-cl_add_uchar(args, 'u', "usergender", "UCHAR", "User gender code", 0, 1);
-```
+- **`short_name`**: Corresponds to a single-dash option like `-n`. Pass `0` if not needed.
+   
+- **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
+  
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
+
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
 
 - **req(required) = 1** → User must provide
 
 - **req(required) = 0** → Optional, `def`(`default`) is used if missing
+
+- **`def`**: The default value for the argument.  
+  - For strings: pass `NULL` if no default is needed.  
+  - For numeric types: pass `0` if no default is needed.  
+  - For `char`: pass `'\0'` if no default is needed.
+
+**Example:**
+```c
+cl_add_uchar(args, 'u', "usergender", "UCHAR", "User gender code", 0, 1);
+```
 
  ---
 
@@ -369,15 +381,27 @@ cl_add_uchar(args, 'u', "usergender", "UCHAR", "User gender code", 0, 1);
 int cl_add_ushort(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned short def);
 ```
 
-**Example:**
-```c
-cl_add_ushort(args, 0, "portnum", "PORT", "Port number", 0, 8080);
-```
+- **`short_name`**: Corresponds to a single-dash option like `-n`. Pass `0` if not needed.
+   
+- **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
+  
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
+
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
 
 - **req(required) = 1** → User must provide
 
 - **req(required) = 0** → Optional, `def`(`default`) is used if missing
+
+- **`def`**: The default value for the argument.  
+  - For strings: pass `NULL` if no default is needed.  
+  - For numeric types: pass `0` if no default is needed. 
+  - For `char`: pass `'\0'` if no default is needed.
+
+**Example:**
+```c
+cl_add_ushort(args, 0, "portnum", "PORT", "Port number", 0, 8080);
+```
 
 ---
 
@@ -386,15 +410,27 @@ cl_add_ushort(args, 0, "portnum", "PORT", "Port number", 0, 8080);
 int cl_add_uint(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned int def);
 ```
 
-**Example:**
-```c
-cl_add_uint(args, 's', "buffersize", "SIZE", "Buffer size", 0, 1024);
-```
+- **`short_name`**: Corresponds to a single-dash option like `-n`. Pass `0` if not needed.
+   
+- **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
+  
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
+
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
 
 - **req(required) = 1** → User must provide
 
 - **req(required) = 0** → Optional, `def`(`default`) is used if missing
+
+- **`def`**: The default value for the argument.  
+  - For strings: pass `NULL` if no default is needed.  
+  - For numeric types: pass `0` if no default is needed. 
+  - For `char`: pass `'\0'` if no default is needed.
+
+**Example:**
+```c
+cl_add_uint(args, 's', "buffersize", "SIZE", "Buffer size", 0, 1024);
+```
 
 ---
 
@@ -403,15 +439,27 @@ cl_add_uint(args, 's', "buffersize", "SIZE", "Buffer size", 0, 1024);
 int cl_add_ulong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned long def);
 ```
 
-**Example:**
-```c
-cl_add_ulong(args, 0, "maxbytes", "MAXBYTES", "Maximum bytes allowed", 0, 500000UL);
-```
+- **`short_name`**: Corresponds to a single-dash option like `-n`. Pass `0` if not needed.
+   
+- **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
+  
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
+
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
 
 - **req(required) = 1** → User must provide
 
 - **req(required) = 0** → Optional, `def`(`default`) is used if missing
+
+- **`def`**: The default value for the argument.  
+  - For strings: pass `NULL` if no default is needed.  
+  - For numeric types: pass `0` if no default is needed. 
+  - For `char`: pass `'\0'` if no default is needed.
+
+**Example:**
+```c
+cl_add_ulong(args, 0, "maxbytes", "MAXBYTES", "Maximum bytes allowed", 0, 500000UL);
+```
 
 ---
 
@@ -420,15 +468,27 @@ cl_add_ulong(args, 0, "maxbytes", "MAXBYTES", "Maximum bytes allowed", 0, 500000
 int cl_add_ullong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned long long def);
 ```
 
-**Example:**
-```c
-cl_add_ullong(args, 0, "hugeval", "HUGEVAL", "Very large integer value", 0, 123456789012345ULL);
-```
+- **`short_name`**: Corresponds to a single-dash option like `-n`. Pass `0` if not needed.
+   
+- **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
+  
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
+
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
 
 - **req(required) = 1** → User must provide
 
 - **req(required) = 0** → Optional, `def`(`default`) is used if missing
+
+- **`def`**: The default value for the argument.  
+  - For strings: pass `NULL` if no default is needed.  
+  - For numeric types: pass `0` if no default is needed. 
+  - For `char`: pass `'\0'` if no default is needed.
+
+**Example:**
+```c
+cl_add_ullong(args, 0, "hugeval", "HUGEVAL", "Very large integer value", 0, 123456789012345ULL);
+```
 
 ---
 
