@@ -89,11 +89,22 @@ cl_add_flag(args, 'v', "verbose", "Enable verbose output");
 int cl_add_string(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, const char *def);
 ```
 
+- **`short_name`**: Corresponds to a single-dash option like `-n`. Pass `0` if not needed.
+   
+- **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
+  
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
+
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
 
 - **req(required) = 1** → User must provide
 
 - **req(required) = 0** → Optional, `def`(`default`) is used if missing
+
+- **`def`**: The default value for the argument.  
+  - For strings: pass `NULL` if no default is needed.  
+  - For numeric types: pass `0` if no default is needed.  
+  - For `char`: pass `'\0'` if no default is needed.
 
  **Example:**
 ```c
@@ -108,15 +119,27 @@ cl_add_string(args, 'c', "city", "CITY", "User city", 0, "Unknown"); // Optional
 int cl_add_char(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, char def);
 ```
 
-**Example:**
-```c
-cl_add_char(args, 'g', "gender", "GENDER", "User gender", 0, 'U'); // Optional
-```
+- **`short_name`**: Corresponds to a single-dash option like `-n`. Pass `0` if not needed.
+   
+- **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
+  
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
+
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
 
 - **req(required) = 1** → User must provide
 
-- **req(required) = 0** → Optional,`def`(`default`) is used if missing
+- **req(required) = 0** → Optional, `def`(`default`) is used if missing
+
+- **`def`**: The default value for the argument.  
+  - For strings: pass `NULL` if no default is needed.  
+  - For numeric types: pass `0` if no default is needed.  
+  - For `char`: pass `'\0'` if no default is needed.
+
+**Example:**
+```c
+cl_add_char(args, 'g', "gender", "GENDER", "User gender", 0, 'U'); // Optional
+```
 
 ---
 
@@ -124,15 +147,28 @@ cl_add_char(args, 'g', "gender", "GENDER", "User gender", 0, 'U'); // Optional
 ```c
 int cl_add_short(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, short def);
 ```
-**Example:**
-```c
-cl_add_short(args, 's', "score", "SCORE", "User score", 0, 10);
-```
+
+- **`short_name`**: Corresponds to a single-dash option like `-n`. Pass `0` if not needed.
+   
+- **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
+  
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
+
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
 
 - **req(required) = 1** → User must provide
 
 - **req(required) = 0** → Optional, `def`(`default`) is used if missing
+
+- **`def`**: The default value for the argument.  
+  - For strings: pass `NULL` if no default is needed.  
+  - For numeric types: pass `0` if no default is needed.  
+  - For `char`: pass `'\0'` if no default is needed.
+
+**Example:**
+```c
+cl_add_short(args, 's', "score", "SCORE", "User score", 0, 10);
+```
 
 ---
 
@@ -141,16 +177,28 @@ cl_add_short(args, 's', "score", "SCORE", "User score", 0, 10);
 int cl_add_int(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, int def);
 ```
 
-**Example:**
-```c
-cl_add_int(args, 'i', "iterations", "N", "Number of iterations", 0, 100);
-cl_add_int(args, 0, "count", "COUNT", "Count of items", 1, 0); // Required
-```
+- **`short_name`**: Corresponds to a single-dash option like `-n`. Pass `0` if not needed.
+   
+- **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
+  
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
+
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
 
 - **req(required) = 1** → User must provide
 
 - **req(required) = 0** → Optional, `def`(`default`) is used if missing
+
+- **`def`**: The default value for the argument.  
+  - For strings: pass `NULL` if no default is needed.  
+  - For numeric types: pass `0` if no default is needed.  
+  - For `char`: pass `'\0'` if no default is needed.
+
+**Example:**
+```c
+cl_add_int(args, 'i', "iterations", "N", "Number of iterations", 0, 100);
+cl_add_int(args, 0, "count", "COUNT", "Count of items", 1, 0); // Required
+```
 
 ---
 
@@ -159,15 +207,27 @@ cl_add_int(args, 0, "count", "COUNT", "Count of items", 1, 0); // Required
 int cl_add_long(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, long def);
 ```
 
-**Example:**
-```c
-cl_add_long(args, 0, "timeout", "TIMEOUT", "Timeout in ms", 0, 5000);
-```
+- **`short_name`**: Corresponds to a single-dash option like `-n`. Pass `0` if not needed.
+   
+- **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
+  
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
+
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
 
 - **req(required) = 1** → User must provide
 
 - **req(required) = 0** → Optional, `def`(`default`) is used if missing
+
+- **`def`**: The default value for the argument.  
+  - For strings: pass `NULL` if no default is needed.  
+  - For numeric types: pass `0` if no default is needed.  
+  - For `char`: pass `'\0'` if no default is needed.
+
+**Example:**
+```c
+cl_add_long(args, 0, "timeout", "TIMEOUT", "Timeout in ms", 0, 5000);
+```
 
 ---
 
@@ -176,15 +236,27 @@ cl_add_long(args, 0, "timeout", "TIMEOUT", "Timeout in ms", 0, 5000);
 int cl_add_llong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, long long def);
 ```
 
-**Example:**
-```c
-cl_add_llong(args, 0, "bigval", "BIGVAL", "Large integer value", 0, 1234567890123LL);
-```
+- **`short_name`**: Corresponds to a single-dash option like `-n`. Pass `0` if not needed.
+   
+- **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
+  
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
+
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
 
 - **req(required) = 1** → User must provide
 
 - **req(required) = 0** → Optional, `def`(`default`) is used if missing
+
+- **`def`**: The default value for the argument.  
+  - For strings: pass `NULL` if no default is needed.  
+  - For numeric types: pass `0` if no default is needed.  
+  - For `char`: pass `'\0'` if no default is needed.
+
+**Example:**
+```c
+cl_add_llong(args, 0, "bigval", "BIGVAL", "Large integer value", 0, 1234567890123LL);
+```
 
 ---
 
@@ -192,15 +264,28 @@ cl_add_llong(args, 0, "bigval", "BIGVAL", "Large integer value", 0, 123456789012
 ```c
 int cl_add_size(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, size_t def);
 ```
-**Example:**
-```c
-cl_add_size(args, 0, "bufsize", "SIZE", "Buffer size", 0, 1024);
-```
+
+- **`short_name`**: Corresponds to a single-dash option like `-n`. Pass `0` if not needed.
+   
+- **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
+  
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
+
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
 
 - **req(required) = 1** → User must provide
 
 - **req(required) = 0** → Optional, `def`(`default`) is used if missing
+
+- **`def`**: The default value for the argument.  
+  - For strings: pass `NULL` if no default is needed.  
+  - For numeric types: pass `0` if no default is needed.  
+  - For `char`: pass `'\0'` if no default is needed.
+
+**Example:**
+```c
+cl_add_size(args, 0, "bufsize", "SIZE", "Buffer size", 0, 1024);
+```
 
 ---
 
@@ -209,15 +294,27 @@ cl_add_size(args, 0, "bufsize", "SIZE", "Buffer size", 0, 1024);
 int cl_add_float(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, float def);
 ```
 
-**Example:**
-```c
-cl_add_float(args, 0, "ratio", "RATIO", "Scaling ratio", 0, 1.5f);
-```
+- **`short_name`**: Corresponds to a single-dash option like `-n`. Pass `0` if not needed.
+   
+- **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
+  
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
+
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
 
 - **req(required) = 1** → User must provide
 
 - **req(required) = 0** → Optional, `def`(`default`) is used if missing
+
+- **`def`**: The default value for the argument.  
+  - For strings: pass `NULL` if no default is needed.  
+  - For numeric types: pass `0` if no default is needed.  
+  - For `char`: pass `'\0'` if no default is needed.
+
+**Example:**
+```c
+cl_add_float(args, 0, "ratio", "RATIO", "Scaling ratio", 0, 1.5f);
+```
 
 ---
 
@@ -225,15 +322,28 @@ cl_add_float(args, 0, "ratio", "RATIO", "Scaling ratio", 0, 1.5f);
 ```c
 int cl_add_double(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, double def);
 ```
-**Example:**
-```c
-cl_add_double(args, 0, "threshold", "THRESH", "Double value", 0, 0.123);
-```
+
+- **`short_name`**: Corresponds to a single-dash option like `-n`. Pass `0` if not needed.
+   
+- **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
+  
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
+
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
 
 - **req(required) = 1** → User must provide
 
 - **req(required) = 0** → Optional, `def`(`default`) is used if missing
+
+- **`def`**: The default value for the argument.  
+  - For strings: pass `NULL` if no default is needed.  
+  - For numeric types: pass `0` if no default is needed.  
+  - For `char`: pass `'\0'` if no default is needed.
+
+**Example:**
+```c
+cl_add_double(args, 0, "threshold", "THRESH", "Double value", 0, 0.123);
+```
 
 ---
 
