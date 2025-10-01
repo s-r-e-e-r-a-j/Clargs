@@ -48,20 +48,6 @@ Clargs *cl_create(const char *prog, const char *desc);
 Clargs *args = cl_create("myprog", "This is a sample parser");
 ```
 ## Adding Arguments
-> **Note:** If you don’t need either the **short name** or the **long name**, you can pass `0`.
-> 
-> Example:  
-> ```c
-> // Only long name
-> cl_add_int(args, 0, "count", "COUNT", "Number of items", 0, 5);
->
-> // Only short name
-> cl_add_flag(args, 'v', 0, "Enable verbose mode");
-> ```
-> 
-> meta is the place-holder name shown in usage (e.g., --name NAME).
-> 
-> The **def** parameter represents the default value for the argument. If no default value is needed, you can pass `NULL` for strings, `'\0'` for char, and `0` for numeric types.
 
 1. **Flag (boolean)**
 ```c
@@ -93,9 +79,9 @@ int cl_add_string(Clargs *p, char short_name, const char *long_name, const char 
    
 - **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
   
-- **`help`**: The help message describing the option. Pass `NULL` if not needed.
-
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
+
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
 
 - **req(required) = 1** → User must provide
 
@@ -123,9 +109,9 @@ int cl_add_char(Clargs *p, char short_name, const char *long_name, const char *m
    
 - **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
   
-- **`help`**: The help message describing the option. Pass `NULL` if not needed.
-
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
+
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
 
 - **req(required) = 1** → User must provide
 
@@ -151,10 +137,10 @@ int cl_add_short(Clargs *p, char short_name, const char *long_name, const char *
 - **`short_name`**: Corresponds to a single-dash option like `-n`. Pass `0` if not needed.
    
 - **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
-  
-- **`help`**: The help message describing the option. Pass `NULL` if not needed.
 
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
+
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
 
 - **req(required) = 1** → User must provide
 
@@ -180,10 +166,10 @@ int cl_add_int(Clargs *p, char short_name, const char *long_name, const char *me
 - **`short_name`**: Corresponds to a single-dash option like `-n`. Pass `0` if not needed.
    
 - **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
-  
-- **`help`**: The help message describing the option. Pass `NULL` if not needed.
 
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
+
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
 
 - **req(required) = 1** → User must provide
 
@@ -210,10 +196,10 @@ int cl_add_long(Clargs *p, char short_name, const char *long_name, const char *m
 - **`short_name`**: Corresponds to a single-dash option like `-n`. Pass `0` if not needed.
    
 - **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
-  
-- **`help`**: The help message describing the option. Pass `NULL` if not needed.
 
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
+
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
 
 - **req(required) = 1** → User must provide
 
@@ -239,10 +225,10 @@ int cl_add_llong(Clargs *p, char short_name, const char *long_name, const char *
 - **`short_name`**: Corresponds to a single-dash option like `-n`. Pass `0` if not needed.
    
 - **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
-  
-- **`help`**: The help message describing the option. Pass `NULL` if not needed.
 
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
+
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
 
 - **req(required) = 1** → User must provide
 
@@ -268,10 +254,10 @@ int cl_add_size(Clargs *p, char short_name, const char *long_name, const char *m
 - **`short_name`**: Corresponds to a single-dash option like `-n`. Pass `0` if not needed.
    
 - **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
-  
-- **`help`**: The help message describing the option. Pass `NULL` if not needed.
 
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
+
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
 
 - **req(required) = 1** → User must provide
 
@@ -297,10 +283,10 @@ int cl_add_float(Clargs *p, char short_name, const char *long_name, const char *
 - **`short_name`**: Corresponds to a single-dash option like `-n`. Pass `0` if not needed.
    
 - **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
-  
-- **`help`**: The help message describing the option. Pass `NULL` if not needed.
 
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
+
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
 
 - **req(required) = 1** → User must provide
 
@@ -326,10 +312,10 @@ int cl_add_double(Clargs *p, char short_name, const char *long_name, const char 
 - **`short_name`**: Corresponds to a single-dash option like `-n`. Pass `0` if not needed.
    
 - **`long_name`**: Corresponds to a double-dash option like `--number`. Pass `0` if not needed.
-  
-- **`help`**: The help message describing the option. Pass `NULL` if not needed.
 
 - **meta** is the place-holder name shown in usage (e.g., `--name NAME`).
+
+- **`help`**: The help message describing the option. Pass `NULL` if not needed.
 
 - **req(required) = 1** → User must provide
 
