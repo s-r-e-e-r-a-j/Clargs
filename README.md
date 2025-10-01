@@ -59,6 +59,7 @@ Clargs *args = cl_create("myprog", "This is a sample parser");
 > cl_add_flag(args, 'v', 0, "Enable verbose mode");
 > ```
 > meta is the place-holder name shown in usage (e.g., --name NAME).
+> The **def** parameter represents the default value for the argument. If no default value is needed, you can pass `NULL` for strings, `'\0'` for char, and `0` for numeric types.
 
 1. **Flag (boolean)**
 ```c
