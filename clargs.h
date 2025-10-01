@@ -120,7 +120,7 @@ static int cl_find_idx(Clargs *p, const char *name) {
     return -1;
 }
 
-static inline int cl_add_flag(Clargs *p, char short_name, const char *long_name, const char *help) {
+static int cl_add_flag(Clargs *p, char short_name, const char *long_name, const char *help) {
     Clarg *a = make_arg();
     a->short_name = short_name;
     a->long_name = long_name;
@@ -131,7 +131,7 @@ static inline int cl_add_flag(Clargs *p, char short_name, const char *long_name,
     return p->count - 1;
 }
 
-static inline int cl_add_string(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, const char *def) {
+static int cl_add_string(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, const char *def) {
     Clarg *a = make_arg();
     a->short_name = short_name;
     a->long_name = long_name;
@@ -147,17 +147,17 @@ static inline int cl_add_string(Clargs *p, char short_name, const char *long_nam
 }
 
 // char 
-static inline int cl_add_char(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, char def) {
+static int cl_add_char(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, char def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"CHAR"; a->help = help; a->kind = ARG_CHAR; a->required = req; a->def_char = def; a->val_char = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
 
 // short 
-static inline int cl_add_short(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, short def) {
+static int cl_add_short(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, short def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"SHORT"; a->help = help; a->kind = ARG_SHORT; a->required = req; a->def_short = def; a->val_short = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
 
 // int 
-static inline int cl_add_int(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, int def) {
+static int cl_add_int(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, int def) {
     Clarg *a = make_arg();
     a->short_name = short_name;
     a->long_name = long_name;
@@ -173,48 +173,48 @@ static inline int cl_add_int(Clargs *p, char short_name, const char *long_name, 
 }
 
 // long 
-static inline int cl_add_long(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, long def) {
+static int cl_add_long(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, long def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"LONG"; a->help = help; a->kind = ARG_LONG; a->required = req; a->def_long = def; a->val_long = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
 
 // long long 
-static inline int cl_add_llong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, long long def) {
+static int cl_add_llong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, long long def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"LLONG"; a->help = help; a->kind = ARG_LLONG; a->required = req; a->def_llong = def; a->val_llong = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
 
 // unsigned variants 
-static inline int cl_add_uchar(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned char def) {
+static int cl_add_uchar(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned char def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"UCHAR"; a->help = help; a->kind = ARG_UCHAR; a->required = req; a->def_uchar = def; a->val_uchar = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
-static inline int cl_add_ushort(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned short def) {
+static int cl_add_ushort(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned short def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"USHORT"; a->help = help; a->kind = ARG_USHORT; a->required = req; a->def_ushort = def; a->val_ushort = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
-static inline int cl_add_uint(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned int def) {
+static int cl_add_uint(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned int def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"UINT"; a->help = help; a->kind = ARG_UINT; a->required = req; a->def_uint = def; a->val_uint = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
-static inline int cl_add_ulong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned long def) {
+static int cl_add_ulong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned long def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"ULONG"; a->help = help; a->kind = ARG_ULONG; a->required = req; a->def_ulong = def; a->val_ulong = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
-static inline int cl_add_ullong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned long long def) {
+static int cl_add_ullong(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, unsigned long long def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"ULLONG"; a->help = help; a->kind = ARG_ULLONG; a->required = req; a->def_ullong = def; a->val_ullong = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
 
 // size_t 
-static inline int cl_add_size(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, size_t def) {
+static int cl_add_size(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, size_t def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"SIZE"; a->help = help; a->kind = ARG_SIZE; a->required = req; a->def_size = def; a->val_size = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
 
 // float 
-static inline int cl_add_float(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, float def) {
+static int cl_add_float(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, float def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"FLT"; a->help = help; a->kind = ARG_FLOAT; a->required = req; a->def_float = def; a->val_float = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
 
 // double 
-static inline int cl_add_double(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, double def) {
+static int cl_add_double(Clargs *p, char short_name, const char *long_name, const char *meta, const char *help, int req, double def) {
     Clarg *a = make_arg(); a->short_name = short_name; a->long_name = long_name; a->meta = meta?meta:"DBL"; a->help = help; a->kind = ARG_DOUBLE; a->required = req; a->def_double = def; a->val_double = def; cl_grow(p); p->args[p->count++] = a; return p->count-1;
 }
 
-static inline int cl_add_pos(Clargs *p, const char *name, const char *help, int req) {
+static int cl_add_pos(Clargs *p, const char *name, const char *help, int req) {
     Clarg *a = make_arg();
     a->long_name = name;
     a->meta = name;
@@ -451,7 +451,7 @@ static int cl_parse(Clargs *p, int argc, char **argv) {
 
 // finder and getters 
 
-static inline Clarg *cl_find(Clargs *p, const char *name) {
+static Clarg *cl_find(Clargs *p, const char *name) {
     if (!name) return NULL;
     for (int i=0;i<p->count;i++) {
         Clarg *a = p->args[i];
@@ -462,29 +462,29 @@ static inline Clarg *cl_find(Clargs *p, const char *name) {
     return NULL;
 }
 
-static inline int cl_get_flag(Clargs *p, const char *name) {
+static int cl_get_flag(Clargs *p, const char *name) {
     Clarg *a = cl_find(p, name); return a && a->present;
 }
 
-static inline const char *cl_get_string(Clargs *p, const char *name) {
+static const char *cl_get_string(Clargs *p, const char *name) {
     Clarg *a = cl_find(p, name); return a ? a->val_str : NULL;
 }
 
-static inline char cl_get_char(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0; } if (ok) *ok = 1; return a->val_char; }
-static inline short cl_get_short(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0; } if (ok) *ok = 1; return a->val_short; }
-static inline int cl_get_int(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0; } if (ok) *ok = 1; return a->val_int; }
-static inline long cl_get_long(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0L; } if (ok) *ok = 1; return a->val_long; }
-static inline long long cl_get_llong(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0LL; } if (ok) *ok = 1; return a->val_llong; }
+static char cl_get_char(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0; } if (ok) *ok = 1; return a->val_char; }
+static short cl_get_short(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0; } if (ok) *ok = 1; return a->val_short; }
+static int cl_get_int(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0; } if (ok) *ok = 1; return a->val_int; }
+static long cl_get_long(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0L; } if (ok) *ok = 1; return a->val_long; }
+static long long cl_get_llong(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0LL; } if (ok) *ok = 1; return a->val_llong; }
 
-static inline unsigned char cl_get_uchar(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0; } if (ok) *ok = 1; return a->val_uchar; }
-static inline unsigned short cl_get_ushort(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0; } if (ok) *ok = 1; return a->val_ushort; }
-static inline unsigned int cl_get_uint(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0u; } if (ok) *ok = 1; return a->val_uint; }
-static inline unsigned long cl_get_ulong(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0ul; } if (ok) *ok = 1; return a->val_ulong; }
-static inline unsigned long long cl_get_ullong(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0ull; } if (ok) *ok = 1; return a->val_ullong; }
+static unsigned char cl_get_uchar(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0; } if (ok) *ok = 1; return a->val_uchar; }
+static unsigned short cl_get_ushort(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0; } if (ok) *ok = 1; return a->val_ushort; }
+static unsigned int cl_get_uint(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0u; } if (ok) *ok = 1; return a->val_uint; }
+static unsigned long cl_get_ulong(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0ul; } if (ok) *ok = 1; return a->val_ulong; }
+static unsigned long long cl_get_ullong(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0ull; } if (ok) *ok = 1; return a->val_ullong; }
 
-static inline size_t cl_get_size(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return (size_t)0; } if (ok) *ok = 1; return a->val_size; }
+static size_t cl_get_size(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return (size_t)0; } if (ok) *ok = 1; return a->val_size; }
 
-static inline float cl_get_float(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0.0f; } if (ok) *ok = 1; return a->val_float; }
-static inline double cl_get_double(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0.0; } if (ok) *ok = 1; return a->val_double; }
+static float cl_get_float(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0.0f; } if (ok) *ok = 1; return a->val_float; }
+static double cl_get_double(Clargs *p, const char *name, int *ok) { Clarg *a = cl_find(p, name); if (!a) { if (ok) *ok = 0; return 0.0; } if (ok) *ok = 1; return a->val_double; }
 
 #endif
