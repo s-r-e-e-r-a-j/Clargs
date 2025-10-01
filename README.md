@@ -483,14 +483,19 @@ cl_add_ullong(args, 0, "hugeval", "HUGEVAL", "Very large integer value", 0, 1234
 int cl_add_pos(Clargs *p, const char *name, const char *help, int req);
 ```
 
+- **`name`**: The name of the positional argument. This will be used to identify it.
+  
+- **`help`**: The help message describing the positional argument. Pass `NULL` if not needed.
+
+- **req(required) = 1** → User must provide
+
+- **req(required) = 0** → Optional
+
 **Example:**
 ```c
 cl_add_pos(args, "input", "Input filename", 1);  // Required positional argument
 cl_add_pos(args, "output", "Output filename", 0); // Optional positional
 ```
-- **req(required) = 1** → User must provide
-
-- **req(required) = 0** → Optional
 
 ---
 
